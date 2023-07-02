@@ -81,4 +81,29 @@ body{
 }
 .grid-cont {
     height: calc(100vh - 11rem);
+    position: relative;
+    overflow: scroll;
+}
+.dummy-cell {
+    width: 2rem;
+    height: 2rem;
+    background-color:#C2C3C4;
+}
+.row-name-cont {
+    width: 2rem;
+    height: 73vh;
+}
+.cells-cont {
+    position: absolute;
+    top: 0%;
+    left: 2rem;
+    height: 10rem;
+    width: 10rem;
+    background-color: bisque;
+}
+.col-name-cont {
+    
+    width: 10rem;
+    height: 2rem;
+    background-color: lightcoral;
 }
