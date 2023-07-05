@@ -53,6 +53,7 @@ body{
     width: 9vw;
     height: 70%;
     border: none;
+    text-align: center;
 }
 .formula-bar {
     width: calc(100vw - 9vw - 20px);
@@ -92,11 +93,14 @@ body{
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 1;
 }
 .row-name-cont {
     position: sticky;
     top: 2rem;
     left: 0;
+    width: 3rem;
+    z-index: 4;
 }
 .cells-cont {
     position: absolute;
@@ -105,6 +109,10 @@ body{
 }
 .col-name-cont {
     display: flex;
+    position: sticky;
+    top: 0;
+    left: 2rem;
+    background-color: white;
 }
 .row-name {
     height: 2rem;
@@ -126,7 +134,9 @@ body{
 .cell {
     height: 2rem;
     width: 5rem;
-    border:1px solid #dfe4ea; 
+    border: 1px solid #dfe4ea;
+    padding: 5px;
+    outline: none;
 }
 .row-cont {
     display: flex;

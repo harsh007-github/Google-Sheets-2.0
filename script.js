@@ -4,7 +4,7 @@ let cols = 26;
 let rowNameCont = document.querySelector(".row-name-cont");
 let colNameCont = document.querySelector(".col-name-cont");
 let cellsCont = document.querySelector(".cells-cont");
-
+let addressBar = document.querySelector(".cell-address");
 //For rows
 for (let i = 1; i <= rows; i++) 
 {
@@ -32,7 +32,17 @@ for(let i = 1; i <= rows; i++)
   {
     let cells = document.createElement("div");
     cells.setAttribute("class", "cell");
+    cells.setAttribute("contenteditable","true");
     rowCont.appendChild(cells);
+    addAddressOfCell(cells, i , j);
   }
   cellsCont.appendChild(rowCont);
+}
+function addAddressOfCell(cells, i , j)
+{
+  cells.addEventListener("click", () => {
+    let rowID = i;
+    let colID = String.fromCharCode(64+j);
+    addressBar.value = `${colID}${rowID}`;
+  })
 }
