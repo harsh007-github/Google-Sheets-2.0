@@ -144,7 +144,18 @@ body{
 .cell-color {
     position: relative;
 }
+.font-color {
+    position: relative;
+}
 .cell-color-picker {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.font-color-picker {
     position: absolute;
     opacity: 0;
     height: 100%;

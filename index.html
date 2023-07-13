@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="grid.js" defer></script>
+    <script src="cellProperty.js" defer></script>
     <title>Sheets</title>
 </head>
 
@@ -40,27 +41,31 @@
             <option value="24">24</option>
             <option value="32">32</option>
         </select>
-        <span class="material-icons">
+        <span class="material-icons bold">
             format_bold
         </span>
-        <span class="material-icons">
+        <span class="material-icons italic ">
             format_italic
         </span>
-        <span class="material-icons">
+        <span class="material-icons underline">
             format_underlined
         </span>
-        <span class="material-icons">
+        <span class="material-icons alignment">
             format_align_left
         </span>
-        <span class="material-icons">
+        <span class="material-icons alignment">
             format_align_center
         </span>
-        <span class="material-icons">
+        <span class="material-icons alignment">
             format_align_right
         </span>
-        <span class="material-icons">
-            format_color_text
-        </span>
+        <div class="font-color">
+            <span class="material-icons">
+                format_color_text
+            </span>
+            <input type="color" class="font-color-picker">
+        </div>
+        
         <div class="cell-color">
             <span class="material-icons">
                 format_color_fill
