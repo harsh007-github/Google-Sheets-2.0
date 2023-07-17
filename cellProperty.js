@@ -53,8 +53,25 @@ underline.addEventListener("click", (e) => {
   let [cell, cellProp] = activeCell(address);
   cellProp.underline = !cellProp.underline;
   cell.style.textDecoration = cellProp.underline ? "underline" : "none";
-  underline.style.backgroundColor = cellProp.underline ? activeColor : inactiveColor;
+  underline.style.backgroundColor = cellProp.underline
+    ? activeColor
+    : inactiveColor;
 });
+
+fontSize.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.fontSize = fontSize.value;
+  cell.style.fontSize = cellProp.fontSize + "px";
+});
+
+fontFamily.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.fontFamily = fontFamily.value;
+  cell.style.fontFamily = cellProp.fontFamily;
+});
+
 function activeCell(address) {
   let [rid, cid] = decodeCellAddress(address);
   let cell = document.querySelector(`.cell[rid="${rid}"][cid = "${cid}"]`);
