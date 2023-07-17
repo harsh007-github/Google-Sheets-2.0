@@ -29,7 +29,7 @@ let leftAlign = alignment[0];
 let centerAlign = alignment[1];
 let rightAlign = alignment[2];
 let activeColor = "#d1d8e0";
-let inactiveColor = "#ecf0f1";
+let inactiveColor = "#C2C3C4";
 
 //Attatching event listeners to cell properties
 bold.addEventListener("click", (e) => {
@@ -38,6 +38,22 @@ bold.addEventListener("click", (e) => {
   cellProp.bold = !cellProp.bold;
   cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
   bold.style.backgroundColor = cellProp.bold ? activeColor : inactiveColor;
+});
+
+italic.addEventListener("click", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.italic = !cellProp.italic;
+  cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+  italic.style.backgroundColor = cellProp.italic ? activeColor : inactiveColor;
+});
+
+underline.addEventListener("click", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.underline = !cellProp.underline;
+  cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+  underline.style.backgroundColor = cellProp.underline ? activeColor : inactiveColor;
 });
 function activeCell(address) {
   let [rid, cid] = decodeCellAddress(address);
