@@ -153,6 +153,7 @@ body{
     position: relative;
 }
 .cell-color-picker {
+    cursor: pointer;
     position: absolute;
     opacity: 0;
     height: 100%;
@@ -161,6 +162,7 @@ body{
     left: 0;
 }
 .font-color-picker {
+    cursor: pointer;
     position: absolute;
     opacity: 0;
     height: 100%;

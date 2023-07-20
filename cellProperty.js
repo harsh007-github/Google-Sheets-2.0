@@ -63,6 +63,7 @@ fontSize.addEventListener("change", (e) => {
   let [cell, cellProp] = activeCell(address);
   cellProp.fontSize = fontSize.value;
   cell.style.fontSize = cellProp.fontSize + "px";
+  fontSize.value = cellProp.fontSize;
 });
 
 fontFamily.addEventListener("change", (e) => {
@@ -70,6 +71,22 @@ fontFamily.addEventListener("change", (e) => {
   let [cell, cellProp] = activeCell(address);
   cellProp.fontFamily = fontFamily.value;
   cell.style.fontFamily = cellProp.fontFamily;
+  fontFamily.value = cellProp.fontFamily;
+});
+
+fontColor.addEventListener("change", (e) =>{
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.fontColor = fontColor.value;
+  cell.style.color = cellProp.fontColor;
+  fontColor.value = cellProp.fontColor;
+})
+cellColor.addEventListener("change", (e) => {
+  let address = addressBar.value;
+  let [cell, cellProp] = activeCell(address);
+  cellProp.cellColor = cellColor.value;
+  cell.style.backgroundColor = cellProp.cellColor;
+  cellColor.value = cellProp.cellColor;
 });
 
 function activeCell(address) {
