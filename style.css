@@ -24,6 +24,11 @@ body{
     align-items: center;
     padding: 0.5rem;
 }
+
+.cellproperty-action-cont > *:hover {
+    cursor: pointer;
+}
+
 .material-icons{
     margin: 0.5rem;
 }
@@ -140,4 +145,28 @@ body{
 }
 .row-cont {
     display: flex;
+}
+.cell-color {
+    position: relative;
+}
+.font-color {
+    position: relative;
+}
+.cell-color-picker {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.font-color-picker {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
