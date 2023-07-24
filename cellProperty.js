@@ -20,7 +20,7 @@ for (let i = 0; i < rows; i++) {
 let bold = document.querySelector(".bold");
 let italic = document.querySelector(".italic");
 let underline = document.querySelector(".underline");
-let alignment = document.querySelector(".alignment");
+let alignment = document.querySelectorAll(".alignment");
 let fontSize = document.querySelector(".font-size");
 let fontFamily = document.querySelector(".font-family");
 let fontColor = document.querySelector(".font-color-picker");
@@ -74,19 +74,56 @@ fontFamily.addEventListener("change", (e) => {
   fontFamily.value = cellProp.fontFamily;
 });
 
-fontColor.addEventListener("change", (e) =>{
+fontColor.addEventListener("change", (e) => {
   let address = addressBar.value;
   let [cell, cellProp] = activeCell(address);
   cellProp.fontColor = fontColor.value;
   cell.style.color = cellProp.fontColor;
   fontColor.value = cellProp.fontColor;
-})
+});
+
 cellColor.addEventListener("change", (e) => {
   let address = addressBar.value;
   let [cell, cellProp] = activeCell(address);
   cellProp.cellColor = cellColor.value;
   cell.style.backgroundColor = cellProp.cellColor;
   cellColor.value = cellProp.cellColor;
+});
+
+alignment.forEach((alignElem) => {
+  alignElem.addEventListener("click", (e) => {
+    let address = addressBar.value;
+    let [cell, cellProp] = activeCell(address);
+    let alignValue = e.target.classList[0];
+    cellProp.alignment = alignValue;
+    cell.style.textAlign = cellProp.alignment;
+    switch (alignValue) {
+      case "left":
+        leftAlign.style.backgroundColor = activeColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "left";
+        break;
+      case "right":
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = activeColor;
+        cell.style.textAlign = "right";
+        break;
+      case "center":
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = activeColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "center";
+        break;
+      default:
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "normal";
+        break;
+    }
+  });
 });
 
 function activeCell(address) {
