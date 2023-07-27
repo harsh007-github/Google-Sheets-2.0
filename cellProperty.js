@@ -125,6 +125,65 @@ alignment.forEach((alignElem) => {
     }
   });
 });
+var allCell = document.querySelectorAll(".cell");
+for (let i = 0; i < allCell.length; i++) {
+  addListenerToAttachCellProp(allCell[i]);
+}
+function addListenerToAttachCellProp(cell) {
+  cell.addEventListener("click", () => {
+    let address = addressBar.value;
+    let [rid, cid] = decodeCellAddress(address);
+    let cellProp = sheetDB[rid][cid];
+
+    cell.style.fontWeight = cellProp.bold ? "bold" : "normal";
+    cell.style.fontStyle = cellProp.italic ? "italic" : "normal";
+    cell.style.textDecoration = cellProp.underline ? "underline" : "none";
+    cell.style.fontSize = cellProp.fontSize + "px";
+    cell.style.color = cellProp.fontColor;
+    cell.style.fontFamily = cellProp.fontFamily;
+    cell.style.textAlign = cellProp.alignment;
+
+    //Apply propeties to UI
+    bold.style.backgroundColor = cellProp.bold ? activeColor : inactiveColor;
+    italic.style.backgroundColor = cellProp.italic
+      ? activeColor
+      : inactiveColor;
+    underline.style.backgroundColor = cellProp.underline
+      ? activeColor
+      : inactiveColor;
+    fontSize.value = cellProp.fontSize;
+    fontFamily.value = cellProp.fontFamily;
+    fontColor.value = cellProp.fontColor;
+    cellColor.value = cellProp.cellColor;
+    cell.style.backgroundColor = cellProp.cellColor;
+    switch (cellProp.alignment) {
+      case "left":
+        leftAlign.style.backgroundColor = activeColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "left";
+        break;
+      case "right":
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = activeColor;
+        cell.style.textAlign = "right";
+        break;
+      case "center":
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = activeColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "center";
+        break;
+      default:
+        leftAlign.style.backgroundColor = inactiveColor;
+        centerAlign.style.backgroundColor = inactiveColor;
+        rightAlign.style.backgroundColor = inactiveColor;
+        cell.style.textAlign = "normal";
+        break;
+    }
+  });
+}
 
 function activeCell(address) {
   let [rid, cid] = decodeCellAddress(address);
