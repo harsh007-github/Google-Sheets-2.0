@@ -1,9 +1,11 @@
-for (let i = 1; i <= rows; i++) {
-  for (let j = 1; j <= close; j++) {
+for(let i = 1; i <= rows; i++)
+{
+  for(let j = 1; j <= cols; j++)
+  {
     let cell = document.querySelector(`.cell[rid="${i}"][cid = "${j}"]`);
     cell.addEventListener("blur", () => {
       let address = addressBar.value;
-      let [activeCell, cellProp] = activeCell(address);
+      let [activeCell, cellProp] = getActiveCell(address);
       let enteredText = activeCell.innerText;
       cellProp.value = enteredText;
     });
@@ -11,22 +13,22 @@ for (let i = 1; i <= rows; i++) {
 }
 let formulaBar = document.querySelector(".formula-bar");
 formulaBar.addEventListener("keydown", (e) => {
-  if (e.key === "enter" && formulaBar.value) {
-    let evaluatedValue = evaluateFormula(formulaBar.value);
-    //To update UI and cellprop in DB
-    setCellUiAndProp(evaluatedValue, formulaBar.value);
-  }
-});
+  let inputFormula = formulaBar.value;
+  if(e.key === "Enter" && inputFormula)
+  {
+    let evaluatedFormula = eval(inputFormula);
 
-function evaluateFormula(formula) {
-  return eval(formula);
-}
+    //To update UI and Cell Prop in DB
+    setCellUiAndProp(evaluatedFormula, inputFormula);
+  }
+}); 
+
 function setCellUiAndProp(evaluatedValue, formula) {
   let address = addressBar.value;
-  let [cell, cellProp] = activeCell(address);
+  let [activeCell, cellProp] = getActiveCell(address);
   //UI Update
-  cell.innerText = evaluatedValue;
+  activeCell.innerText = evaluatedValue; 
   //DB Update
-  cellProp.value = evaluatedValue;
-  cellProp.formula = formula;
+  cellProp.value = evauatedValue
+  cellProp.formula = formula; 
 }
