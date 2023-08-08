@@ -18,7 +18,7 @@ for (let i = 0; i < rows; i++) {
   }
   sheetDB.push(sheetRow);
 }
-//Selecting all properties
+//Selecting all Cell Properties
 let bold = document.querySelector(".bold");
 let italic = document.querySelector(".italic");
 let underline = document.querySelector(".underline");
@@ -33,7 +33,7 @@ let rightAlign = alignment[2];
 let activeColor = "#d1d8e0";
 let inactiveColor = "#C2C3C4";
 
-//Attatching event listeners to cell properties
+//Addding event listeners to cell properties
 bold.addEventListener("click", (e) => {
   let address = addressBar.value;
   let [cell, cellProp] = getActiveCell(address);
@@ -147,7 +147,7 @@ function addListenerToAttachCellProp(cell) {
     cell.style.backgroundColor =
       cellProp.cellColor === "#000000" ? "transparent" : cellProp.cellColor;
 
-    //Apply propeties to UI
+    //Applying propeties to UI
     bold.style.backgroundColor = cellProp.bold ? activeColor : inactiveColor;
     italic.style.backgroundColor = cellProp.italic
       ? activeColor

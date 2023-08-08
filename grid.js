@@ -31,7 +31,8 @@ for (let i = 1; i <= rows; i++) {
     cells.setAttribute("class", "cell");
     cells.setAttribute("contenteditable", "true");
     cells.setAttribute("spellcheck", "false");
-    //For cell storage and identification
+    
+    //For storage and identification of cells
     cells.setAttribute("rId", i);
     cells.setAttribute("cId", j);
     rowCont.appendChild(cells);
