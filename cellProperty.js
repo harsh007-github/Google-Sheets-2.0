@@ -10,9 +10,9 @@ for (let i = 0; i < rows; i++) {
       fontFamily: "monospace",
       fontSize: "14",
       fontColor: "#000000",
-      cellColor: "#000000", // Just for indication purpose,
+      cellColor: "#000000",
       formula: "",
-      value: ""
+      value: "",
     };
     sheetRow.push(cellProp);
   }
@@ -144,7 +144,8 @@ function addListenerToAttachCellProp(cell) {
     cell.style.color = cellProp.fontColor;
     cell.style.fontFamily = cellProp.fontFamily;
     cell.style.textAlign = cellProp.alignment;
-    cell.style.backgroundColor = cellProp.cellColor === "#000000" ? "transparent" : cellProp.cellColor;
+    cell.style.backgroundColor =
+      cellProp.cellColor === "#000000" ? "transparent" : cellProp.cellColor;
 
     //Apply propeties to UI
     bold.style.backgroundColor = cellProp.bold ? activeColor : inactiveColor;

@@ -5,7 +5,8 @@ let rowNameCont = document.querySelector(".row-name-cont");
 let colNameCont = document.querySelector(".col-name-cont");
 let cellsCont = document.querySelector(".cells-cont");
 let addressBar = document.querySelector(".cell-address");
-//For rows
+
+//Rows
 for (let i = 1; i <= rows; i++) {
   let rowName = document.createElement("div");
   rowName.innerText = i;
@@ -13,7 +14,7 @@ for (let i = 1; i <= rows; i++) {
   rowNameCont.appendChild(rowName);
 }
 
-//For Columns
+//Columns
 for (let i = 1; i <= cols; i++) {
   let colName = document.createElement("div");
   colName.innerText = String.fromCharCode(64 + i);
