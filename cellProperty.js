@@ -13,6 +13,7 @@ for (let i = 0; i < rows; i++) {
       cellColor: "#000000",
       formula: "",
       value: "",
+      children: [],
     };
     sheetRow.push(cellProp);
   }

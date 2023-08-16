@@ -15,20 +15,33 @@ formulaBar.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && inputFormula) {
     let evaluatedFormula = evaluateFormula(inputFormula);
     //To update UI and Cell Prop in DB
-    setCellUiAndProp(evaluatedFormula, inputFormula);
+    let address = addressBar.value;
+    setCellUiAndProp(evaluatedFormula, inputFormula, address);
+    // addParentChildRelation(inputFormula);
   }
 });
+
+//To establish relation b/w parent cell and child cell
+// function addParentChildRelation(formula) {
+//   let encodedFormula = formula.split(" ");
+//   let childAddress = addressBar.value;
+//   for (let i = 0; i < encodedFormula.length; i++) {
+//     let asciiValue = encodedFormula[i].charCodeAt(0);
+//     if (asciiValue >= 65 && asciiValue <= 90) {
+//       let [parentCell, parentCellProp] = getActiveCell(encodedFormula[i]);
+//       parentCellProp.children.push(childAddress);
+//     }
+//   }
+// }
 
 function evaluateFormula(formula) {
   //Formula to be performed over cells (A1 + B9)
   let encodedFormula = formula.split(" ");
-  for(let i = 0; i < encodedFormula.length; i++)
-  {
+  for (let i = 0; i < encodedFormula.length; i++) {
     let asciiValue = encodedFormula[i].charCodeAt(0);
-    if(asciiValue >= 65 && asciiValue <= 90)
-    {
-        let[cell,cellProp] = getActiveCell(encodedFormula[i]);
-        encodedFormula[i] = cellProp.value;
+    if (asciiValue >= 65 && asciiValue <= 90) {
+      let [cell, cellProp] = getActiveCell(encodedFormula[i]);
+      encodedFormula[i] = cellProp.value;
     }
   }
   let decodedFormula = encodedFormula.join(" ");
@@ -37,8 +50,7 @@ function evaluateFormula(formula) {
   return eval(decodedFormula);
 }
 
-function setCellUiAndProp(evaluatedValue, formula) {
-  let address = addressBar.value;
+function setCellUiAndProp(evaluatedValue, formula, address) {
   let [activeCell, cellProp] = getActiveCell(address);
   //UI Update
   activeCell.innerText = evaluatedValue;
