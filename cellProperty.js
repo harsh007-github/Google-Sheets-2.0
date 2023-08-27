@@ -11,9 +11,8 @@ for (let i = 0; i < rows; i++) {
       fontSize: "14",
       fontColor: "#000000",
       cellColor: "#000000",
-      formula: "",
       value: "",
-      children: [],
+      formula: " ",
     };
     sheetRow.push(cellProp);
   }
@@ -128,10 +127,12 @@ alignment.forEach((alignElem) => {
     }
   });
 });
+
 var allCell = document.querySelectorAll(".cell");
 for (let i = 0; i < allCell.length; i++) {
   addListenerToAttachCellProp(allCell[i]);
 }
+
 function addListenerToAttachCellProp(cell) {
   cell.addEventListener("click", () => {
     let address = addressBar.value;
@@ -197,7 +198,7 @@ function getActiveCell(address) {
 }
 
 function decodeCellAddress(address) {
-  let rowId = Number(address.slice(1));
-  let colId = Number(address.charCodeAt(0) - 64);
+  let rowId = Number(address.slice(1) - 1);
+  let colId = Number(address.charCodeAt(0) - 65);
   return [rowId, colId];
 }

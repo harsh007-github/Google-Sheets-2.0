@@ -7,26 +7,26 @@ let cellsCont = document.querySelector(".cells-cont");
 let addressBar = document.querySelector(".cell-address");
 
 //Rows
-for (let i = 1; i <= rows; i++) {
+for (let i = 0; i < rows; i++) {
   let rowName = document.createElement("div");
-  rowName.innerText = i;
+  rowName.innerText = i + 1;
   rowName.setAttribute("class", "row-name");
   rowNameCont.appendChild(rowName);
 }
 
 //Columns
-for (let i = 1; i <= cols; i++) {
+for (let i = 0; i < cols; i++) {
   let colName = document.createElement("div");
-  colName.innerText = String.fromCharCode(64 + i);
+  colName.innerText = String.fromCharCode(65 + i);
   colName.setAttribute("class", "col-name");
   colNameCont.appendChild(colName);
 }
 
 //For Cells
-for (let i = 1; i <= rows; i++) {
+for (let i = 0; i < rows; i++) {
   let rowCont = document.createElement("div");
   rowCont.setAttribute("class", "row-cont");
-  for (let j = 1; j <= cols; j++) {
+  for (let j = 0; j < cols; j++) {
     let cells = document.createElement("div");
     cells.setAttribute("class", "cell");
     cells.setAttribute("contenteditable", "true");
@@ -42,8 +42,8 @@ for (let i = 1; i <= rows; i++) {
 }
 function addAddressOfCell(cells, i, j) {
   cells.addEventListener("click", () => {
-    let rowID = i;
-    let colID = String.fromCharCode(64 + j);
+    let rowID = i + 1;
+    let colID = String.fromCharCode(65 + j);
     addressBar.value = `${colID}${rowID}`;
   });
 }
