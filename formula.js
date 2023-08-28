@@ -15,12 +15,20 @@ formulaBar.addEventListener("keydown", (e) => {
   let inputFromula = formulaBar.value;
   if (e.key === "Enter" && inputFromula) {
     
+    //If change in formula occurs
+    let address = addressBar.value;
+    let [cell, cellProp] = getActiveCell(address);
+    if(inputFromula !== cellProp.formula)
+    {
+      removeChild(cellProp.formula);
+    }
+
     let evaluatedValue = evaluateFormula(inputFromula);
     setCellUiAndCellProp(evaluatedValue, inputFromula);
-    
+
     //Establishing Parent Child Relation
     parentChildRealtion(inputFromula);
-    console.log(sheetDB);
+    // console.log(sheetDB);
   }
 });
 
@@ -32,6 +40,22 @@ function parentChildRealtion(formula) {
     if (asciiValue >= 65 && asciiValue <= 90) {
       let [parentCell, parentCellProp] = getActiveCell(encodedFormula[i]);
       parentCellProp.children.push(childAddress);
+    }
+  }
+}
+
+//In case formula is changed by user
+function removeChild(formula) {
+  let encodedFormula = formula.split(" ");
+  let childAddress = addressBar.value;
+  for (let i = 0; i < encodedFormula.length; i++) {
+    let asciiValue = encodedFormula[i].charCodeAt(0);
+    if (asciiValue >= 65 && asciiValue <= 90) {
+      let [parentCell, parentCellProp] = getActiveCell(encodedFormula[i]);
+      
+      //Removing the child from parent's children array
+      let index = parentCellProp.children.indexOf(childAddress);
+      parentCellProp.children.splice(index, 1);
     }
   }
 }
