@@ -188,6 +188,9 @@ function addListenerToAttachCellProp(cell) {
         cell.style.textAlign = "normal";
         break;
     }
+    let formulaBar = document.querySelector(".formula-bar");
+    formulaBar.value = cellProp.formula;
+    cell.value = cellProp.value;
   });
 }
 
