@@ -25,7 +25,7 @@ formulaBar.addEventListener("keydown", (e) => {
     if (inputFromula !== cellProp.formula) {
       removeChild(cellProp.formula);
     }
-
+    addChildToGraphCompnent(inputFromula, address)
     let evaluatedValue = evaluateFormula(inputFromula);
     setCellUiAndCellProp(evaluatedValue, inputFromula, address);
 
@@ -35,6 +35,20 @@ formulaBar.addEventListener("keydown", (e) => {
     updateChildren(address);
   }
 });
+
+function addChildToGraphCompnent(formula, childAddress) {
+  let[crid, ccid] = decodeCellAddress(childAddress);
+  let encodedFormula = formula.split(" ");
+  for (let i = 0; i < encodedFormula.length; i++) 
+  {
+    let asciiValue = encodedFormula[i].charCodeAt(0);
+    if (asciiValue >= 65 && asciiValue <= 90) 
+    {
+      let [prid, pcid] =decodeCellAddress(encodedFormula[i]);
+      graphComponentMatrix[prid][pcid].push([crid , ccid]);
+    }
+  }
+}
 
 function parentChildRealtion(formula) {
   let encodedFormula = formula.split(" ");
